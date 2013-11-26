@@ -1,6 +1,6 @@
-FF-pipeline-FINAL
+WW-pipeline-FINAL
 =================
-Latest scripts and configuration files that will be used to align and drizzle images for the Frontier Fields. The order for calling the scripts is as follows:
+Latest scripts and configuration files that will be used to align and drizzle images. The order for calling the scripts is as follows:
 
 1. *run_make_crclean*
     * _Purpose_: construct crclean images for flts located in asn file (default), or any specified flts.
