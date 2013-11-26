@@ -11,7 +11,7 @@ DEPENDS:
 Python 2.5.4
 
 AUTHOR:
-D. HAMMER for STScI, 2013
+D. HAMMER, 2013
 
 HISTORY:
 July 2013: Original script (v0.1).
