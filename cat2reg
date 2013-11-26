@@ -1,0 +1,17 @@
+#!/bin/bash
+
+#Construct ds9 region file from sextractor cat file
+
+#EG CALL: cat2reg wmtot.cat
+
+# P. Tzanavaris 2008 -- original script
+# D. Hammer 2013 -- modified to construct Kron apertures.
+
+file=$1
+regfile=$file.reg
+
+echo \# Region file format\: DS9 version 4.0 > $regfile
+echo global color\=green font\=\"helvetica 10 normal\" select\=1 highlite\=1 edit\=1 move\=1 delete\=1 include\=1 fixed\=0 source >> $regfile
+echo image >> $regfile
+gawk '{if($1!~/\#/) {majaxis = $4*$7; minaxis=$5*$7; print "ellipse("$2","$3","majaxis","minaxis","$6")"}}' $file >> $regfile
+#gawk '{if($1!~/\#/) {print "ellipse("$2","$3","$4","$5","$6")"}}' $file >> $regfile
