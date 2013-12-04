@@ -143,10 +143,12 @@ def make_trimmed_catalog(fullcat,trimcat,maxobj,maxfwhm,minstellar):
        flag,sclass,isoflags,nisoflags,isoarea = np.loadtxt(fullcat,unpack=True)
 
     # -- select objects that satisfy criteria
-    keep = np.where(((np.int32(flag) & 29) == 0) & (isoflags < 2) & (np.float(nisoflags)/np.float(isoarea) <= 0.1) & \
+    keep = np.where(((np.int32(flag) & 29) == 0) & (isoflags < 2) &   \
+                    (nisoflags.astype('float32')/isoarea.astype('float32') <= 0.1) & \
                     (sclass >= minstellar) & (fwhm <= maxfwhm))[0]
     fluxmin = sorted(faper2[keep],reverse=True)[np.min([len(faper2[keep]),maxobj])-1]
-    gd = np.where(((np.int32(flag) & 29) == 0) & (isoflags < 2) & (np.float(nisoflags)/np.float(isoarea) <= 0.1) & \
+    gd = np.where(((np.int32(flag) & 29) == 0) & (isoflags < 2) & \
+                  (nisoflags.astype('float32')/isoarea.astype('float32') <= 0.1) & \
                   (sclass >= minstellar) & (fwhm <= maxfwhm) & (faper2 >= fluxmin))[0]
 
     # -- save trimmed catalog
