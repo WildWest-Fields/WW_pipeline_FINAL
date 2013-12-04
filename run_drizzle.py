@@ -40,6 +40,7 @@ if __name__=='__main__':
     parser = argparse.ArgumentParser(description='Run tweakreg on input images using custom source catalogs.')
     parser.add_argument('-im',  '--images',default='*fl?.fits', type=str, help='Input image file(s). \
                                  Default is all _fl? images in current directory.')
+    parser.add_argument('-out', '--outname',default='NA', type=str,help='Prefix for AD output.')
     parser.add_argument('-pf',  '--pixfrac',default=0.6, type=float, help='Input AstroDrizzle "final_pixfrac" parameter. \
                                  Default is 0.6 - expected value for large ACS stacks.')
     parser.add_argument('-ps',  '--pixscale',default=0.03, type=float, help='Input AstroDrizzle "final_scale" parameter. \
@@ -67,6 +68,7 @@ if __name__=='__main__':
 
     # -- initialize variables to input arguments
     NCORES = options.cores
+    outname = options.outname
     pixscale = options.pixscale
     pixfrac = options.pixfrac
     finalbits = options.finalbits
@@ -121,7 +123,8 @@ if __name__=='__main__':
 
     # -- run AstroDrizzle
     teal.unlearn('astrodrizzle')
-    astrodrizzle.AstroDrizzle('@imlist.dat',output=filtname.lower()+'_'+finalwht.lower(),num_cores=NCORES, \
+    if outname == 'NA': outname = filtname.lower()+'_'+finalwht.lower()
+    astrodrizzle.AstroDrizzle('@imlist.dat',output=outname,num_cores=NCORES, \
                                 clean=False,preserve=False, \
                                 combine_type=combtype,combine_nhigh=cnhigh,combine_nlow=cnlow,
                                 skywidth=0.1,skystat=skystat, \
