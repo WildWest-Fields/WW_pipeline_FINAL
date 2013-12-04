@@ -50,8 +50,8 @@ if __name__=='__main__':
     parser.add_argument('-fk',  '--finalkernel',default='gaussian', type=str, choices=['square','point','gaussian',\
                                  'turbo','tophat','lanczos3'],help='Input AstroDrizzle "final_kernel" parameter. \
                                  Default value is "gaussian".')
-    parser.add_argument('-wht', '--whttype',default='IVM', type=str, help='Input AstroDrizzle "final_wht_type" parameter. \
-                                 Default value is "IVM" which constructs source-free variance map.')
+    parser.add_argument('-wht', '--whttype',default='IVM', type=str, choices=['EXP','ERR','IVM'],help='Input AstroDrizzle \
+                                 "final_wht_type" parameter. Default value is IVM (source-free inv. variance map.')
     parser.add_argument('-ra',  '--finalra',default=None, type=float, help='Input AstroDrizzle "final_ra" parameter. \
                                  Default value indicates no footprint (AD selects image dimensions).')
     parser.add_argument('-dec', '--finaldec',default=None, type=float, help='Input AstroDrizzle "final_dec" parameter. \
