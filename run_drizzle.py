@@ -47,8 +47,9 @@ if __name__=='__main__':
     parser.add_argument('-fb',  '--finalbits',default=0, type=int, help='Input AstroDrizzle "final_bits" parameter. \
                                  Default value is 0 (assumes several visits). \
                                  A single visit drizzle should adopt 64 or 96 for WFC3 IR and ACS, respectively.')
-    parser.add_argument('-fk',  '--finalkernel',default='gaussian', type=str, help='Input AstroDrizzle "final_kernel" \
-                                 parameter. Default value is "gaussian".')
+    parser.add_argument('-fk',  '--finalkernel',default='gaussian', type=str, choices=['square','point','gaussian',\
+                                 'turbo','tophat','lanczos3'],help='Input AstroDrizzle "final_kernel" parameter. \
+                                 Default value is "gaussian".')
     parser.add_argument('-wht', '--whttype',default='IVM', type=str, help='Input AstroDrizzle "final_wht_type" parameter. \
                                  Default value is "IVM" which constructs source-free variance map.')
     parser.add_argument('-ra',  '--finalra',default=None, type=float, help='Input AstroDrizzle "final_ra" parameter. \
