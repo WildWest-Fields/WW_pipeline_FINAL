@@ -49,9 +49,10 @@ if __name__=='__main__':
                                  Default = SExtractor XWIN column.')
     parser.add_argument('-ryc', '--refycol',default=9, type=int, help='Input (ref)catalog column that corresponds to y. \
                                  Default = SExtractor YWIN column.')
-    parser.add_argument('-runit','--refunit',default='pixels', type=str, help='Input tweakreg "refxyunits" parameter. \
-                                  Default = "pixels".')
-    parser.add_argument('-fit', '--fittype',default='rscale', type=str, help='Input tweakreg "fitgeometry" parameter. \
+    parser.add_argument('-runit','--refunit',default='pixels', type=str, choices=['pixels','degrees'], \
+                                  help='Input tweakreg "refxyunits" parameter. Default = "pixels".')
+    parser.add_argument('-fit', '--fittype',default='rscale', type=str, choices=['shift','rscale'],
+                                 help='Input tweakreg "fitgeometry" parameter. \
                                  Default = "rscale", i.e., shift, rotation, and pixel size.')
     				 
     options = parser.parse_args()
