@@ -86,11 +86,11 @@ if __name__=='__main__':
     if len(irefim) > 0:
         irefim = irefim[0]
         irefcat = irefcat[0]
-	USE_REF = True
+	#USE_REF = True
     else:
         irefim = ''
         irefcat = ''
-        USE_REF = False
+        #USE_REF = False
 
 
     # -- set conv width based on filter name (IR = 2.5; optical=3.5)
@@ -110,16 +110,16 @@ if __name__=='__main__':
     # -- run tweakreg (SExtractor catalog: XWIN/YWIN cols 8/9; X_IMAGE/Y_IMAGE cols 2/3)
     teal.unlearn('tweakreg')
 
-    if USE_REF:
-        tweakreg.TweakReg('@imlist.dat',runfile=logfile,shiftfile=True,outshifts='shift.dat',updatehdr=True, \
+    #if USE_REF:
+    tweakreg.TweakReg('@imlist.dat',runfile=logfile,shiftfile=True,outshifts='shift.dat',updatehdr=True, \
 			fitgeometry=fittype,catfile=catfilename,xcol=xcol,ycol=ycol, \
 			refimage=irefim,refcat=irefcat,refxyunits=runit,refxcol=rxcol,refycol=rycol, \
 			conv_width=conv_wid,searchrad=3.0,nclip=7,see2dplot=False,residplot='No plot')
-                        #headerlet=True,attach=False,hdrname='TWEAKDRZ')
-    else:
-        tweakreg.TweakReg('@imlist.dat',runfile=logfile,shiftfile=True,outshifts='shift.dat',updatehdr=True, \
-			fitgeometry=fittype,catfile=catfilename,xcol=xcol,ycol=ycol, \
-			conv_width=conv_wid,searchrad=3.0,nclip=7,see2dplot=False,residplot='No plot')
+			
+    #else:
+    #    tweakreg.TweakReg('@imlist.dat',runfile=logfile,shiftfile=True,outshifts='shift.dat',updatehdr=True, \
+    #			fitgeometry=fittype,catfile=catfilename,xcol=xcol,ycol=ycol, \
+    #			conv_width=conv_wid,searchrad=3.0,nclip=7,see2dplot=False,residplot='No plot')
 
 
     # -- remove unwanted tweakreg files
