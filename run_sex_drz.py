@@ -173,7 +173,7 @@ if __name__=='__main__':
                          Default is NONE. Number of exposure maps must match number of drizzled images. \
                          IVM switch takes precedence, i.e., if both -ivm & -exp, will drizzle with IVM final_wht_type \
                          but will use exposure map to construct flag map to exclude bad sources in trimmed catalog.')
-    parser.add_argument('-th', '--threshold',default=10, type=float, help='Input threshold used for BOTH detect_thresh \
+    parser.add_argument('-th', '--threshold',default=5, type=float, help='Input threshold used for BOTH detect_thresh \
                          and analysis_thresh. Default is 10 - tests showed better tweakreg residuals at 10.')
     parser.add_argument('-max', '--maxobj',default=300, type=int, help='Input maximum number of SExtractor detections \
                          to use for tweakreg matching. Default is 300 objects per extension.')
