@@ -124,6 +124,7 @@ if __name__=='__main__':
     # -- run AstroDrizzle
     teal.unlearn('astrodrizzle')
     if outname == 'NA': outname = filtname.lower()+'_'+finalwht.lower()
+    else: outname = outname +'_'+finalwht.lower()
     astrodrizzle.AstroDrizzle('@imlist.dat',output=outname,num_cores=NCORES, \
                                 clean=False,preserve=False, \
                                 combine_type=combtype,combine_nhigh=cnhigh,combine_nlow=cnlow,
